@@ -16,7 +16,7 @@ from helios_auth.security import get_user
 ## BASICS
 ##
 
-SUCCESS = HttpResponse("SUCESSO")
+SUCCESS = HttpResponse("SUCCESS")
 
 ##
 ## template abstraction
