@@ -48,7 +48,7 @@
 	<li class="divider"></li>
 	{% endif %}
 	{% if not settings.MASTER_HELIOS %}
-	<li><a href="http://heliosvoting.org">About Helios</a></li>
+	<li><a href="http://heliosvoting.org">Sobre o Helios</a></li>
 	{% endif %}
       </ul>
       
@@ -67,7 +67,7 @@
         <li><a href="/privacy">Privacy</a></li>
 	{% endif %}
         <li class="divider"></li>
-        <li><a href="mailto:{{settings.HELP_EMAIL_ADDRESS}}">Help!</a></li>
+        <li><a href="mailto:{{settings.HELP_EMAIL_ADDRESS}}">Ajuda!</a></li>
       </ul>
     </section>
   </nav>
@@ -98,7 +98,7 @@
 {% if settings.SHOW_LOGIN_OPTIONS %}
     not logged in. <a class="tiny button" href="{{settings.SECURE_URL_HOST}}{% url "auth@index" %}?return_url={{CURRENT_URL}}">log in</a>
 {% else %}
-powered by <a href="http://heliosvoting.org">Helios Voting</a>.
+movido por <a href="http://heliosvoting.org">Helios Voting</a>.
 {% endif %}
     {% endif %}
     {% endif %}
