@@ -65,7 +65,7 @@ def password_login_view(request):
           return HttpResponseRedirect(reverse(url_names.AUTH_AFTER))
       except User.DoesNotExist:
         pass
-      error = 'Bad Username or Password'
+      error = 'Usuário ou Senha Incorretos'
   
   return render_template(request, 'password/login', {'form': form, 'error': error})
     
@@ -86,21 +86,21 @@ def password_forgotten_view(request):
     try:
       user = User.get_by_type_and_id('password', username)
     except User.DoesNotExist:
-      return render_template(request, 'password/forgot', {'return_url': request.GET.get('return_url', ''), 'error': 'no such username'})
+      return render_template(request, 'password/forgot', {'return_url': request.GET.get('return_url', ''), 'error': 'nome de usuário não existe'})
     
     body = """
 
-This is a password reminder:
+Este é um lembrete de senha:
 
-Your username: %s
-Your password: %s
+Seu nome de usuário: %s
+Sua senha: %s
 
 --
 %s
 """ % (user.user_id, user.info['password'], settings.SITE_TITLE)
 
     # FIXME: make this a task
-    send_mail('password reminder', body, settings.SERVER_EMAIL, ["%s <%s>" % (user.info['name'], user.info['email'])], fail_silently=False)
+    send_mail('lembrete de senha', body, settings.SERVER_EMAIL, ["%s <%s>" % (user.info['name'], user.info['email'])], fail_silently=False)
     
     return HttpResponseRedirect(return_url)
   
