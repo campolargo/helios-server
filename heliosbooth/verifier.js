@@ -6,51 +6,51 @@ function verify_ballot(election_raw_json, encrypted_vote_json, status_cb) {
     try {
 	election = HELIOS.Election.fromJSONString(election_raw_json);
 	var election_hash = election.get_hash();
-	status_cb("election fingerprint is " + election_hash);
+	status_cb("assinatura da eleição é " + election_hash);
 	
 	// display ballot fingerprint
 	encrypted_vote = HELIOS.EncryptedVote.fromJSONObject(encrypted_vote_json, election);
-	status_cb("ballot tracker is " + encrypted_vote.get_hash());
+	status_cb("rastreador da cédula é " + encrypted_vote.get_hash());
 	
       // check the hash
       if (election_hash == encrypted_vote.election_hash) {
-          status_cb("election fingerprint matches ballot");
+          status_cb("assinatura da eleição confere com cédula");
       } else {
           overall_result = false;
-          status_cb("PROBLEM = election fingerprint does not match");          
+          status_cb("PROBLEMA = assinatura da eleição não confere");          
       }
       
       // display the ballot as it is claimed to be
-      status_cb("Ballot Contents:");
+      status_cb("Conteúdo da Cédula:");
       _(election.questions).each(function(q, qnum) {
 	      if (q.tally_type != "homomorphic") {
-		  status_cb("WARNING: the tally type for this question is not homomorphic. Verification may fail because this verifier is only set up to handle homomorphic ballots.");
+		  status_cb("ALERTA: o tipo de contagem para esta questão não é homomórfica. A verificação pode falhar porque este verificador é apenas configurado para processar cédulas homomórficas.");
 	      }
         
 	      var answer_pretty_list = _(encrypted_vote.encrypted_answers[qnum].answer).map(function(aindex, anum) {
 		      return q.answers[aindex];
 		  });
-	      status_cb("Question #" + (qnum+1) + " - " + q.short_name + " : " + answer_pretty_list.join(", "));
+	      status_cb("Questão #" + (qnum+1) + " - " + q.short_name + " : " + answer_pretty_list.join(", "));
       });
       
       // verify the encryption
       if (encrypted_vote.verifyEncryption(election.questions, election.public_key)) {
-          status_cb("Encryption Verified");
+          status_cb("Criptografia Verificada");
       } else {
           overall_result = false;
-          status_cb("PROBLEM = Encryption doesn't match.");
+          status_cb("PROBLEMA = Criptografia não confere.");
       }
       
       // verify the proofs
       if (encrypted_vote.verifyProofs(election.public_key, function(ea_num, choice_num, result) {
       })) {
-          status_cb("Proofs ok.");
+          status_cb("Provas ok.");
       } else {
           overall_result = false;
-          status_cb("PROBLEM = Proofs don't work.");
+          status_cb("PROBLEMA = Provas não funcionam.");
       }
     } catch (e) {
-      status_cb('problem parsing election or ballot data structures, malformed inputs: ' + e.toString());
+      status_cb('problema ao interpretar estruturas de dados da eleição ou cédula, entradas mal-formadas: ' + e.toString());
       overall_result=false;
     }
 
