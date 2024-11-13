@@ -1,16 +1,16 @@
-Dear {{voter.name}},
+Caro(a) {{voter.name}},
 
-You have successfully cast a vote in {{election.name}}.
+Você submeteu com sucesso um voto em {{election.name}}.
 
-Your ballot tracker is:
+Seu rastreador de cédula é:
 {{cast_vote.vote_hash}}
 
-And your full encrypted ballot is archived at:
+E sua cédula criptografada completa está arquivada em:
 {{cast_vote_url}}
 
 {% if election.use_voter_aliases %}
-This election uses voter aliases to protect your privacy.
-Your voter alias is: {{voter.alias}}.
+Esta eleição usa apelidos de votante para proteger sua privacidade.
+Seu apelido de votante é: {{voter.alias}}.
 {% endif %}
 
 --
