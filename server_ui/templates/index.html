@@ -40,13 +40,13 @@ More than <b>2,000,000 votes</b> have been cast using Helios.
   <p>
     {% for election in elections %}
     <div class="panel">
-      <a style="font-size: 1.4em;" href="{% url "shortcut@election" election.short_name %}">{{election.name}}</a>{% if settings.SHOW_USER_INFO %}<br /> by {{election.admin.display_html_small|safe}}{% endif %}
+      <a style="font-size: 1.4em;" href="{% url "shortcut@election" election.short_name %}">{{election.name}}</a>{% if settings.SHOW_USER_INFO %}<br /> por {{election.admin.display_html_small|safe}}{% endif %}
     </div>
     <br />
     {% endfor %}
   </p>
   {% else %}
-  <h4>no featured elections at the moment</h4>
+  <h4>não há eleições publicadas no momento</h4>
   {% endif %}
 {% endif %}
   
@@ -93,7 +93,7 @@ More than <b>2,000,000 votes</b> have been cast using Helios.
 {{login_box|safe}}
 {% else %}
 <p>
-Select an election to start voting. You will be asked for your voting credentials after you complete a ballot.
+Selecione uma eleição para começar a votar. Você será perguntado pelas suas credenciais de votação depois que você completar uma cédula.
 </p>
 {% endif %}
 {% endif %}
