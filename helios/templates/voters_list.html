@@ -1,15 +1,15 @@
 {% extends TEMPLATE_BASE %}
 
-{% block title %}Voters &amp; Ballot Tracking Center for {{election.name}}{% endblock %}
+{% block title %}Centro de Rastreamento de Cédulas &amp; Votantes para {{election.name}}{% endblock %}
 {% block content %}
-  <h3 class="title">{{election.name}} &mdash; Voters and Ballot Tracking Center <span style="font-size:0.7em;">[<a href="{% url "election@view" election.uuid %}">back to election</a>]</span></h3>
+  <h3 class="title">{{election.name}} &mdash; Centro de Rastreamento de Cédulas e Votantes <span style="font-size:0.7em;">[<a href="{% url "election@view" election.uuid %}">voltar à eleição</a>]</span></h3>
 
 <p>
-<b>Who can vote?</b>
+<b>Quem pode votar?</b>
 {% if election.openreg %}
 {{election.pretty_eligibility|safe}}
 {% else %}
-<em>Only the voters listed here</em>.
+<em>Apenas os votantes listados aqui</em>.
 {% endif %}
 </p>
 
@@ -42,9 +42,9 @@
 {% if election.num_voters > 20 %}
 <p>
 {% if q %}
-<p><em>searching for <u>{{q}}</u>.</em> [<a href="?">clear search</a>]</p>
+<p><em>pesquisando por <u>{{q}}</u>.</em> [<a href="?">limpar pesquisa</a>]</p>
 {% else %}
-<form method="get" action="{% url "election@voters@list-pretty" election.uuid %}"><b>search</b>: <input type="text" name="q" /> <input type="submit" value="search" /></form>
+<form method="get" action="{% url "election@voters@list-pretty" election.uuid %}"><b>pesquisar</b>: <input type="text" name="q" /> <input type="submit" value="Pesquisar" /></form>
 {% endif %}
 </p>
 {% endif %}
@@ -90,22 +90,22 @@ Prior Bulk Uploads:
 <p>
 <b>
 {% if election.num_cast_votes %}
-{{election.num_cast_votes}} cast vote{% if election.num_cast_votes == 1 %}{% else %}s{% endif %}
+{{election.num_cast_votes}} voto{% if election.num_cast_votes == 1 %} submetido{% else %}s submetidos{% endif %}
 {% else %}
-no votes yet
+sem votos ainda
 {% endif %}
 </b>
 </p>
 
 {% if voters_page.has_previous %}
-<a href="{% url "election@voters@list-pretty" election.uuid %}?page={{voters_page.previous_page_number}}&limit={{limit}}&q={{q|urlencode}}">previous {{limit}}</a> &nbsp;&nbsp;
+<a href="{% url "election@voters@list-pretty" election.uuid %}?page={{voters_page.previous_page_number}}&limit={{limit}}&q={{q|urlencode}}">{{limit}} anteriores</a> &nbsp;&nbsp;
 {% endif %}
 
 
-Voters {{voters_page.start_index}} - {{voters_page.end_index}} (of {{total_voters}})&nbsp;&nbsp;
+Votantes {{voters_page.start_index}} - {{voters_page.end_index}} (de {{total_voters}})&nbsp;&nbsp;
 
 {% if voters_page.has_next %}
-<a href="{% url "election@voters@list-pretty" election.uuid %}?page={{voters_page.next_page_number}}&limit={{limit}}&q={{q|urlencode}}">next {{limit}}</a> &nbsp;&nbsp;
+<a href="{% url "election@voters@list-pretty" election.uuid %}?page={{voters_page.next_page_number}}&limit={{limit}}&q={{q|urlencode}}">próximos {{limit}}</a> &nbsp;&nbsp;
 {% endif %}
 
 <table class="pretty">
@@ -120,9 +120,9 @@ Voters {{voters_page.start_index}} - {{voters_page.end_index}} (of {{total_voter
 {% endif %}
 
 {% if election.use_voter_aliases %}
-<th>Alias</th>
+<th>Apelido</th>
 {% endif %}
-<th>Smart Ballot Tracker</th>
+<th>Rastreador Inteligente de Cédula</th>
 </tr>
 {% for voter in voters %}
 <tr>
@@ -149,7 +149,7 @@ Voters {{voters_page.start_index}} - {{voters_page.end_index}} (of {{total_voter
 
 {% else %}
 <br /><br />
-<em>no voters.</em>
+<em>sem votantes.</em>
 {% endif %}
 
 {% endblock %}
