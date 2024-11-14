@@ -1,16 +1,16 @@
 {% extends TEMPLATE_BASE %}
-{% block title %}Confirm Vote{% endblock %}
+{% block title %}Confirmar Voto{% endblock %}
 
 {% block content %}
-<h1>{{election.name}} &mdash; Vote Successfully Cast!</h1>
+<h1>{{election.name}} &mdash; Voto Submetido com Sucesso!</h1>
 
 {% if vote_hash %}
 <p>
-  Your ballot tracker is:<br />
+  Seu rastreador de cédula é:<br />
     <span style="font-size:1.4em; font-weight: bold; word-break: break-word;">  {{vote_hash}}</span>
 </p>
 <p>
-  This ballot tracker mathematically ensures that your ballot is counted. You can check all ballot trackers by viewing the <a href="{% url "election@voters@list-pretty" election.uuid %}">voter list</a>, where your ballot tracker should appear within a few minutes.
+  Este rastreador de cédula matematicamente garante que sua cédula seja contada. Você pode checar todos os rastreadores de cédula visualizando a <a href="{% url "election@voters@list-pretty" election.uuid %}">lista de votantes</a>, onde seu rastreador de cédula deve aparecer em alguns minutos.
 </p>
 {% endif %}
 
@@ -21,7 +21,7 @@
 {% endif %}
 
 <p style="font-size: 1.4em;">
-[ <a href="{% url "election@view" election.uuid %}">return to election info</a> ]
+[ <a href="{% url "election@view" election.uuid %}">voltar às informações da eleição</a> ]
 </p>
 
 {% endblock %}
