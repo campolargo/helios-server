@@ -9,7 +9,7 @@
 {% endif %}
 {% endif %}</h3>
 <p style="padding-top:0px; margin-top:0px">
-{{ election.election_type }} <em>{% if election.private_p %}privada{%else%}pública{% endif %}</em> {% if settings.SHOW_USER_INFO %} criada por <u><b>{{election.admin.display_html_small|safe}}</b></u>{% endif %}
+eleição <em>{% if election.private_p %}privada{%else%}pública{% endif %}</em> {% if settings.SHOW_USER_INFO %} criada por <u><b>{{election.admin.display_html_small|safe}}</b></u>{% endif %}
 {% if election.is_archived %}
 [arquivada]
 {% endif %}
@@ -181,18 +181,18 @@ Once you do this, the tally will visible to you, the administrator, only.
 {% else %}
 
 {% if election.voting_has_started %}
-<a class="button" href="{{test_cookie_url}}">Vote nesta {{election.election_type}} </a>
+<a class="button" href="{{test_cookie_url}}">Vote nesta eleição </a>
 <br />
 <br />
 {% if election.voting_extended_until %}
-Esta {{election.election_type}} foi inicialmente agendada para terminar em {{election.voting_ends_at}} (UTC),<br />
+Esta eleição foi inicialmente agendada para terminar em {{election.voting_ends_at}} (UTC),<br />
 mas foi extendida até {{ election.voting_extended_until }} (UTC).
 {% else %}
 {% if election.voting_ends_at %}
 <br />
-Esta {{election.election_type}} está agendada para terminar em {{election.voting_ends_at}} (UTC).
+Esta eleição está agendada para terminar em {{election.voting_ends_at}} (UTC).
 {% else %}
-Esta {{election.election_type}} termina a critério do administrador.
+Esta eleição termina a critério do administrador.
 {% endif %}
 <br />
 {% endif %}
