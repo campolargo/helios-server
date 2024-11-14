@@ -48,8 +48,8 @@ this {{election.election_type}} is <u>not</u> featured on the front page.
 
 <p>
 {% if election.help_email and admin_p%}Help Email Address: {{election.help_email}}<br />{% endif %}
-{% if election.voting_start_at %}Votação inicia em {{election.voting_start_at}}<br />{% endif %}
-{% if election.voting_end_at %}Votação termina em {{election.voting_end_at}}<br />{% endif %}
+{% if election.voting_start_at %}Votação inicia em {{election.voting_start_at|timezone:"America/Sao_Paulo"}}<br />{% endif %}
+{% if election.voting_end_at %}Votação termina em {{election.voting_end_at|timezone:"America/Sao_Paulo"}}<br />{% endif %}
 </p>
 
 {% if election.election_info_url %}
@@ -97,7 +97,7 @@ this {{election.election_type}} is <u>not</u> featured on the front page.
 <br />
 {% if election.voting_starts_at %}
 once you do this, the election will be ready for voting and will open automatically<br />
-at {{election.voting_starts_at}}, as per your settings.
+at {{election.voting_starts_at|timezone:"America/Sao_Paulo"}}, as per your settings.
 {% else %}
 once you do this, the election will be immediately open for voting.
 {% endif %}
@@ -185,12 +185,12 @@ Once you do this, the tally will visible to you, the administrator, only.
 <br />
 <br />
 {% if election.voting_extended_until %}
-Esta eleição foi inicialmente agendada para terminar em {{election.voting_ends_at}} (UTC),<br />
-mas foi extendida até {{ election.voting_extended_until }} (UTC).
+Esta eleição foi inicialmente agendada para terminar em {{election.voting_ends_at|timezone:"America/Sao_Paulo"}},<br />
+mas foi extendida até {{ election.voting_extended_until|timezone:"America/Sao_Paulo" }}.
 {% else %}
 {% if election.voting_ends_at %}
 <br />
-Esta eleição está agendada para terminar em {{election.voting_ends_at}} (UTC).
+Esta eleição está agendada para terminar em {{election.voting_ends_at|timezone:"America/Sao_Paulo"}}.
 {% else %}
 Esta eleição termina a critério do administrador.
 {% endif %}
