@@ -1,1 +1,1 @@
-Tally Released - {{custom_subject|safe}}
+Contagem Liberada - {{custom_subject|safe}}
