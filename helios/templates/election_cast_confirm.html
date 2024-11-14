@@ -1,5 +1,5 @@
 {% extends TEMPLATE_BASE %}
-{% block title %}Confirm Vote{% endblock %}
+{% block title %}Confirmar Voto{% endblock %}
 
 {% block content %}
 <script language="javascript">
@@ -24,7 +24,7 @@ window.onbeforeunload = function(evt) {
     evt = window.event;
   }
   
-  var message = "You have not yet cast your ballot! Make sure to complete the voting process if you want your vote to count.";
+  var message = "Você ainda não submeteu sua cédula! Certifique-se de completar o processo de votação se você quiser que seu voto conte.";
 
   if (evt) {
     evt.returnValue = message;
@@ -34,15 +34,15 @@ window.onbeforeunload = function(evt) {
 };
 
 </script>
-<h1>Don't go yet!<br />Your ballot has not yet been cast.</h1>
+<h1>Não vá ainda!<br />Sua cédula ainda não foi submetida.</h1>
 
 <div id="waiting_div">
-    Verifying and Casting your ballot<br />
+    Verificando e Submetendo sua cédula<br />
     <img src="/static/helios/loading.gif" />
 </div>
 
 <div style="word-wrap: break-word; width: 90vw;">
-Your ballot tracker is:<br>
+Seu rastreador de cédula é:<br>
 <b>{{vote_fingerprint}}</b>
 <br><br>
 </div>
