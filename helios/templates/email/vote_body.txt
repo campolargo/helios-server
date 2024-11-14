@@ -1,34 +1,34 @@
-Dear {{voter.name}},
+Caro(a) {{voter.name}},
 
 {{custom_message|safe}}
 
-Election URL (click to begin voting):
+URL da Eleição (clique para começar a votar):
 {{election_vote_url}}
 
 {% if voter.voter_type == "password" %}
-Your voter ID: {{voter.voter_login_id}}
-Your password: {{voter.voter_password}}
+Seu ID de votante: {{voter.voter_login_id}}
+Sua senha: {{voter.voter_password}}
 {% else %}
 Log in with your {{voter.voter_type}} account.
 {% endif %}{% if voter.vote_hash %}
-We have recorded your vote with ballot tracker:
+Nós registramos seu voto com rastreador de cédula:
 
   {{voter.vote_hash}}
 
-You may re-vote if you wish: only your last vote counts.
+Você pode votar novamente se você desejar: apenas seu último voto conta.
 {% endif %}{% if election.use_voter_aliases %}
-In order to protect your privacy, this election is configured
-to never display your voter login ID, name, or email address to the public.
-Instead, the ballot tracking center will only display your alias.
+A fim de proteger sua privacidade, esta eleição é configurada
+para nunca mostrar seu ID de login de votante, nome, ou endereço de email para o público.
+Em vez disso, o centro de rastreamento de cédulas irá apenas mostrar seu apelido.
 
-Your voter alias is {{voter.alias}}.
+Seu apelido de votante é {{voter.alias}}.
 
-IMPORTANTLY, when you are prompted to log in to vote,
-please use your *voter ID*, not your alias.
+IMPORTANTE, quando você é solicitado a logar para votar,
+por favor use seu *ID de votante*, não seu apelido.
 {% endif %}
 
-You may wish to verify the election fingerprint at the bottom of
-the screen when you vote:  {{voter.election.hash}}
+Você pode desejar verificar a assinatura da eleição no final da
+tela quando você votar:  {{voter.election.hash}}
 
 --
 Helios
